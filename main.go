@@ -45,7 +45,7 @@ func main() {
 		Handler: miRouter,
 	}
 
-	fmt.Println("Servidor Inciado")
+	fmt.Println("Servidor Iniciado - PUERTO : 8000")
 	miServer.ListenAndServe()
 
 }
