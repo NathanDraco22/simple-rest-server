@@ -3,8 +3,11 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
+	"io"
 	"miRest/models"
 	"net/http"
+	"os"
+	"strconv"
 
 	"github.com/gorilla/mux"
 )
@@ -146,8 +149,21 @@ func PostFile(resW http.ResponseWriter, req *http.Request) {
 	responseModel.Title = "Has subido un archivo correctamente"
 	responseModel.Message = "Has subido el archivo : -" + header.Filename
 
+	newFile, err := os.Create("uploaded - " + header.Filename)
+	if err != nil {
+		fmt.Println(err)
+		return
+	}
+	defer newFile.Close()
+
+	bytesWriten, err := io.Copy(newFile, file)
+
+	if err != nil {
+		return
+	}
+
 	jsonEnconder.Encode(responseModel)
 
-	fmt.Println(responseModel.Message)
+	fmt.Println(responseModel.Message + " bytes: " + strconv.Itoa(int(bytesWriten)))
 
 }
