@@ -18,5 +18,5 @@ A simple rest server to testing or practices your front-end app
  -> practice the POST method, send a json.
  
  [POST] /postFile 
-  -> send a file less than 2mb, the file will put in the sever directory (Multipart Form Request).
+  -> send a file less than 2mb, the file will put in the sever directory (Multipart Form Request), the file field must be "miFile"
  
