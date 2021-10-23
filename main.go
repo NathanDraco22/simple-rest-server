@@ -9,8 +9,10 @@ import (
 	"github.com/gorilla/mux"
 )
 
+var Version string = "0.1.1"
+
 func main() {
-	fmt.Println("Iniciando Servidor....")
+	fmt.Println("Iniciando Servidor - Version " + Version)
 
 	//-----------Router Mux------------------------------------
 
