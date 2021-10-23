@@ -45,6 +45,7 @@ func main() {
 		Handler: miRouter,
 	}
 
+	fmt.Println("Servidor Inciado")
 	miServer.ListenAndServe()
 
 }

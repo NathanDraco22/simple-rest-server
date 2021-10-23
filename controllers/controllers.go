@@ -2,6 +2,7 @@ package controllers
 
 import (
 	"encoding/json"
+	"fmt"
 	"miRest/models"
 	"net/http"
 
@@ -21,12 +22,14 @@ func InitController(resW http.ResponseWriter, req *http.Request) {
 		reponseModel.Title = "REALIZADO METODO -POST-"
 		reponseModel.Message = "Has realizado un metodo POST correctamente"
 	default:
-		reponseModel.Title = "Metodo Invalido"
+		reponseModel.Title = "Metodo Invalido -" + req.Method
 		reponseModel.Message = "Este endpoint solo acepta metodos GET y POST"
 
 	}
 
 	jsonEnconder.Encode(reponseModel)
+
+	fmt.Println(reponseModel.Title)
 
 }
 
@@ -40,6 +43,8 @@ func PathParameterController(resW http.ResponseWriter, req *http.Request) {
 	}
 
 	json.NewEncoder(resW).Encode(responseModel)
+
+	fmt.Println("Metodo get con Path Parameters")
 
 }
 
@@ -78,6 +83,8 @@ func QueryParameters(resW http.ResponseWriter, req *http.Request) {
 
 	jsonEncoder.Encode(responseModel)
 
+	fmt.Println("Metodo Get - Query Parameters")
+
 }
 
 func PostBodyJson(resW http.ResponseWriter, req *http.Request) {
@@ -97,6 +104,8 @@ func PostBodyJson(resW http.ResponseWriter, req *http.Request) {
 
 		jsonEncoder.Encode(responseModel)
 
+		fmt.Println(responseModel.Title)
+
 		return
 	}
 
@@ -108,6 +117,7 @@ func PostBodyJson(resW http.ResponseWriter, req *http.Request) {
 
 	jsonEncoder.Encode(responseJsonModel)
 
+	fmt.Println(responseJsonModel.Title + "-" + responseJsonModel.Message)
 }
 
 func PostFile(resW http.ResponseWriter, req *http.Request) {
@@ -126,6 +136,8 @@ func PostFile(resW http.ResponseWriter, req *http.Request) {
 		responseModel.Message = "Archivo no enviado correctamente -miFile-"
 		jsonEnconder.Encode(responseModel)
 
+		fmt.Println(responseModel.Title)
+
 		return
 
 	}
@@ -135,5 +147,7 @@ func PostFile(resW http.ResponseWriter, req *http.Request) {
 	responseModel.Message = "Has subido el archivo : -" + header.Filename
 
 	jsonEnconder.Encode(responseModel)
+
+	fmt.Println(responseModel.Message)
 
 }
