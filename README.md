@@ -1,7 +1,7 @@
 # simple-rest-server
 A simple rest server to testing or practices your front-end app
 
-## ENPOINTS 
+## Endpoints
 
 (localhost:8000) "http://127.0.0.1:8000"
 
