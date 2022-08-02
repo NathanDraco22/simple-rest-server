@@ -2,14 +2,13 @@ package main
 
 import (
 	"fmt"
-	"net/http"
-
 	"miRest/controllers"
+	"net/http"
 
 	"github.com/gorilla/mux"
 )
 
-var Version string = "0.1.1"
+var Version string = "0.1.2"
 
 func main() {
 	fmt.Println("Iniciando Servidor - Version " + Version)
